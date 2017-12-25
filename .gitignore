@@ -36,6 +36,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+.idea
+
 # Ionic example
 ionic/example/.sourcemaps/*
 ionic/example/node_modules/*
