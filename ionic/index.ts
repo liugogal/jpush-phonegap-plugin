@@ -138,7 +138,7 @@ export class JPush extends IonicNativePlugin {
   setBasicPushNotificationBuilder(): Promise<any> { return; }
 
   @Cordova()
-  setCustomPushNotificationBuilder(params: any): Promise<any> { return; }
+  setCustomPushNotificationBuilder(): Promise<any> { return; }
 
   @Cordova()
   clearAllNotification(): Promise<any> { return; }

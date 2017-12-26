@@ -281,9 +281,9 @@ JPushPlugin.prototype.setBasicPushNotificationBuilder = function () {
   }
 }
 
-JPushPlugin.prototype.setCustomPushNotificationBuilder = function (params) {
+JPushPlugin.prototype.setCustomPushNotificationBuilder = function () {
   if (device.platform === 'Android') {
-    this.callNative('setCustomPushNotificationBuilder', [params], null)
+    this.callNative('setCustomPushNotificationBuilder', [], null)
   }
 }
 

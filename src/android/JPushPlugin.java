@@ -559,38 +559,6 @@ public class JPushPlugin extends CordovaPlugin {
         //         R.id.icon, R.id.title, R.id.text);
         // JPushInterface.setPushNotificationBuilder(2, builder);
         // JPushInterface.setDefaultPushNotificationBuilder(builder);
-
-
-        try {
-
-            //传入sound  vibrate lights 三个值 分别实现声音震动呼吸灯通知
-            boolean sound = false;
-            boolean vibrate = false;
-            boolean lights = false;
-
-            BasicPushNotificationBuilder builder = new BasicPushNotificationBuilder(this.cordova.getActivity());
-
-            JSONObject params = data.getJSONObject(0);
-            sound = params.getBoolean("sound");
-            vibrate = params.getBoolean("vibrate");
-            lights = params.getBoolean("lights");
-
-            if(sound) {
-                builder.notificationDefaults = builder.notificationDefaults | Notification.DEFAULT_SOUND;
-            }
-            if(vibrate) {
-                builder.notificationDefaults = builder.notificationDefaults | Notification.DEFAULT_VIBRATE;
-            }
-            if(lights) {
-                builder.notificationDefaults = builder.notificationDefaults | Notification.DEFAULT_LIGHTS;
-            }
-
-            JPushInterface.setDefaultPushNotificationBuilder(builder);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-            callbackContext.error("Parameters error.");
-        }
     }
 
     void clearAllNotification(JSONArray data, CallbackContext callbackContext) {
