@@ -3,6 +3,7 @@ package cn.jiguang.cordova.push;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AppOpsManager;
+import android.app.Notification;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build;
@@ -64,7 +65,7 @@ public class JPushPlugin extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         mContext = cordova.getActivity().getApplicationContext();
-        
+
         JPushInterface.init(mContext);
 
         cordovaActivity = cordova.getActivity();
@@ -571,9 +572,15 @@ public class JPushPlugin extends CordovaPlugin {
             BasicPushNotificationBuilder builder = new BasicPushNotificationBuilder(this.cordova.getActivity());
 
             JSONObject params = data.getJSONObject(0);
-            sound = params.getBoolean("sound");
-            vibrate = params.getBoolean("vibrate");
-            lights = params.getBoolean("lights");
+            if(params.has("sound")){
+                sound = params.getBoolean("sound");
+            }
+            if(params.has("vibrate")){
+                vibrate = params.getBoolean("vibrate");
+            }
+            if(params.has("lights")) {
+                lights = params.getBoolean("lights");
+            }
 
             if(sound) {
                 builder.notificationDefaults = builder.notificationDefaults | Notification.DEFAULT_SOUND;
@@ -589,7 +596,6 @@ public class JPushPlugin extends CordovaPlugin {
 
         } catch (JSONException e) {
             e.printStackTrace();
-            callbackContext.error("Parameters error.");
         }
     }
 
