@@ -582,6 +582,8 @@ public class JPushPlugin extends CordovaPlugin {
                 lights = params.getBoolean("lights");
             }
 
+            builder.notificationDefaults = 0;
+
             if(sound) {
                 builder.notificationDefaults = builder.notificationDefaults | Notification.DEFAULT_SOUND;
             }
